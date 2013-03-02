@@ -1,0 +1,86 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+<html>
+<head>
+<title> Admin Home </title>
+<script language="javascript" type="text/javascript">
+
+$(document).ready(function(){
+      $.jqplot.config.enablePlugins = true;
+   s1 = [['23-May-2010',2],['24-May-2010',4],['25-May-2010',3],['26-May-2010',
+5]];
+
+    s2 = [3,5,7,4,8];
+    s3 = [9,11,15,8,15];
+    s4 = [8,7,12,18,4];
+    s5 = [13,17,21,19,11];
+    l1 = [];
+    l2 = [];
+    l3 = [];
+    
+    for (var i=0; i<100; i++) {
+        l1.push(Math.random()*7);
+        l2.push(Math.random()*13);
+        l3.push(Math.random()*2);
+    }
+
+
+   plot1 = $.jqplot('chart1',[s1],{
+       title: 'Simple Report',
+       axes: {
+           xaxis: {
+               renderer: $.jqplot.DateAxisRenderer,
+               tickOptions: {
+                   formatString: '%b %#d, %Y'
+               },
+               numberTicks: 4
+           },
+           yaxis: {
+               tickOptions: {
+                   formatString: '$%.2f'
+               }
+           }
+       },
+       highlighter: {
+           sizeAdjust: 10,
+           tooltipLocation: 'n',
+           useAxesFormatters: false,
+           formatString: 'Hello %s dayglow %d'
+       },
+       cursor: {
+           show: true,
+           zoom: true
+       }
+   });
+   
+   plot2 = $.jqplot('chart2', [s2, s3, s4, s5], { highlighter: { bringSeriesToFront: true, tooltipLocation: 'e', tooltipOffset: 0, formatString: '<div class="jqplot-highlighter"><span>#seriesLabel#</span>%s: <strong>%s</strong></div>' } });
+   plot3 = $.jqplot('chart3', [s2, s3], { highlighter: { bringSeriesToFront: true, tooltipLocation: 'e', tooltipOffset: 0, formatString: '<div class="jqplot-highlighter"><span>#seriesLabel#</span>%s: <strong>%s</strong></div>' } });
+   plot4 = $.jqplot('chart4', [s2, s3, s4], { highlighter: { bringSeriesToFront: true, tooltipLocation: 'e', tooltipOffset: 0, formatString: '<div class="jqplot-highlighter"><span>#seriesLabel#</span>%s: <strong>%s</strong></div>' } });
+   plot5 = $.jqplot('chart5', [l1, l2, l3], { seriesDefaults:{neighborThreshold:0, showMarker:false}, highlighter: { bringSeriesToFront: true, tooltipLocation: 'e', tooltipOffset: 0, formatString: '<div class="jqplot-highlighter"><span>#seriesLabel#</span>%s: <strong>%s</strong></div>' } });
+   
+});
+
+</script>
+</title>
+</head>
+<body>
+<fieldset>
+<legend> Admin Panel </legend>
+<ul>
+<li class="large button yellow">
+    #{a @Admin.astrologer()}Astrologer#{/a}
+</li>
+<br>
+<li class="large button green">
+    #{a @Admin.user()}User#{/a}
+</li>
+<br>
+<li class="large button blue">
+    #{a @Admin.code()}Prepaid Code#{/a}
+</li>
+</ul>
+</fieldset>
+<fieldset>
+<legend> Report </legend>
+<div id="chart1" class="plot" style="width:500px;height:300px;"></div>
+</fieldset>

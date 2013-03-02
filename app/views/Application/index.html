@@ -1,0 +1,43 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<script src="@{'/public/javascripts/slidedeck.jquery.lite.js'}" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/slidedeck.skin.css'}">
+<style type="text/css">
+    #slidedeck_frame {
+        width: 901px;
+        height: 300px;
+    }        
+</style>
+
+<div class="span-7 colborder">
+    <h6>Here's a box</h6>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+</div>
+<div class="span-8 colborder">
+    <h6>And another box</h6>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat laboris nisi ut aliquip.</p>
+</div>
+<div class="span-7 last">
+    <h6>This box is aligned with the sidebar</h6>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+</div>
+<hr>
+<div class="container">
+	<div id="slidedeck_frame" class="skin-slidedeck">
+		<dl class="slidedeck">
+			<dt>Customer Support</dt>
+			<dd><img src="../public/images/simple_img_1.png" width="650px" height="280px"></dd>
+			<dt>Contact Us</dt>
+			<dd><img src="../public/images/simple_img_3.png" width="650px" height="280px"></dd>
+			<dt>Our Team</dt>
+			<dd><img src="../public/images/simple_img_4.png" width="650px" height="280px"></dd>
+			<dt>Our Services</dt>
+			<dd><img src="../public/images/simple_img_5.png" width="650px" height="280px"></dd>
+		</dl>
+	</div>
+</div>
+	<script type="text/javascript">
+		$('.slidedeck').slidedeck();
+	</script>
+<hr>

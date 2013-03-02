@@ -1,0 +1,29 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<h3>Astrologer Profile</h3>
+<p>
+    Name - ${astrologer.name}<br/>
+    Biography - ${astrologer.biography}<br />
+    Price - ${astrologer.price}<br />
+    Receive Point - ${astrologer.receivePoint}<br />
+</p>
+#{form @Admin.updateAstrologer(astrologer.id)}
+<p>
+    <label>Name</label><br />
+    <input type="text" name="name" class="title"/>
+</p>
+<p>
+  <label>Biography</label><br />
+  <input type="text" name="biography" class="title">
+</p>
+<p>
+    <label>Price</label><br />
+    <input type="text" name="price" class="title"/>
+</p>
+<p>
+    <label>Receive Point</label><br />
+    <input type="text" name="point" class="title"/>
+</p>
+<input type="submit" value="Update" class="large button blue" style="border:0px;"/>
+#{/form}

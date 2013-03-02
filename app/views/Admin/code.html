@@ -1,0 +1,33 @@
+#{extends 'main.html' /}
+#{set title:'Admin' /}
+
+<fieldset>
+<legend> Prepaid Code </legend>
+<ul>
+#{list items:codes, as:'code'}
+<li style="list-style:square;font-size: 14	px;">    
+        ${code.codeNo} 
+        #{if code.usedEmail}
+        used By ${code.usedEmail}
+        #{/if}
+</li>
+#{/list}
+</ul>
+</fieldset>
+<div>
+#{form @Admin.saveCode() , id:'creationForm' }
+#{field 'prepaidCode.codeNo'}
+<p>
+	<fieldset>
+	<legend> Add the Prepaid Code </legend>
+  <label>  </label>
+  <input type="text" id="${field.id}" name="${field.name}" class="title"><br>
+	<input type="submit" value="Add"  class="large button pink" style="border:0px;"/>
+</p></fieldset>
+
+<hr style="height:0.1em; margin:5px; 0px; 5px; 0px;">
+#{/}
+
+#{/form}
+
+</div>

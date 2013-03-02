@@ -1,0 +1,16 @@
+#{extends 'main.html' /}
+#{set title:'show Profile' /}
+
+
+<fieldset> 
+<legend> User Profile </legend>
+
+<p>
+    User Name - ${cust.name} <br />
+    Email Address - ${cust.info.email} <br/>
+    Address - ${cust.info.address} <br />
+    
+</p>
+<div class="large button orange" style="border:0px;">
+#{a @Customer.editProfile()}Edit Profile#{/a}</div>
+</fieldset>

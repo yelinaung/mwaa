@@ -1,0 +1,42 @@
+#{extends 'main.html' /}
+#{set title:'Register' /}
+
+<script type="text/javascript">	
+		$(document).ready(function() {
+			$("#creationForm").validationEngine()
+		});
+</script>
+
+<fieldset>
+<legend>This is Registration Form. Please fill Out it! It's awesome.  </legend>
+#{form @Register.register() , id:'creationForm' }
+#{ifErrors}
+    <p class="error">
+        ${errors[0]}
+    </p>
+#{/ifErrors}
+#{field 'userInfo.email'}
+<p>
+  <label> Email </label><br />
+  <input type="text" id="${field.id}" name="${field.name}" class="title validate[required,custom[email]]">
+</p>
+#{/}
+#{field 'userInfo.password'}
+<p>
+  <label> Password </label><br />
+  <input type="password" id="${field.id}" name="${field.name}" class="title validate[required]">
+</p>
+#{/}
+
+<p>
+        <label for="captcha">Please Type This Below</label><br />
+        <img src="@{Register.captcha(randomID)}" /><br />
+        <input type="text" name="captcha" id="captcha" class="title validate[required]"/>
+        <input type="hidden" name="randomID" value="${randomID}" />
+    </p>
+    <p>
+        <input type="submit" value="Submit" class="large button yellow" style="border:0px"><font color="white">11</font>
+        <input type="reset" value="Reset" class="large button yellow" style="border:0px">
+    </p>
+</fieldset>
+#{/form}

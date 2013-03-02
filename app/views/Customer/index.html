@@ -1,0 +1,68 @@
+#{extends 'main.html' /}
+#{set title:'User Page' /}
+
+<fieldset>
+<legend> User Page </legend>
+#{ifnot questions}
+
+<div class="large button green" style="text-decoration:none;" id="showprofile">
+#{a @Customer.showProfile()}Show Profile#{/a}</div>
+<p>There is no Question</p>
+#{/ifnot}
+<p>
+Current Credit Point = ${cust.creditPoint}
+</p>
+#{if questions}
+<ul>
+    #{list items:questions,as:'question'}
+	   <li>   #{a @Customer.showAnswer(question.id)}${question.question} #{/a} </li>
+	   #{/list}
+</ul>
+#{/if}
+<div>
+    #{form @Customer.usePrepaidCode()}
+    <p>
+        <label>Prepaid Code</label>
+        <input type="text" name="code" class="title"/>
+    </p>
+    <input type="submit" value="Use" alue="Add" class="large button red" style="border:0px;"/>
+</fieldset>
+<br>
+<hr>
+    #{/form}
+</div>
+	<div class="container">
+	<fieldset>
+	<legend> Add Your Question here </legend>
+    <div>
+    #{form @Customer.addQuestion(),id:'creationForm'}
+    #{field 'qa.question'}
+    <p>
+        <label><h3 style="margin:0px;"></h3></label><br>
+		<textarea id="${field.id} myTextarea" cols="15" rows="4" name="${field.name}"></textarea>
+			<div class="wmd-preview"></div>
+        <!--<input type="text" id="${field.id}" name="${field.name}" class="question_box">-->
+    </p>
+    #{/}
+    <p>
+	<div>
+        <label>Question Type</label>
+        <select name="type">
+            #{list items:types,as:'type'}
+            <option value="${type}">${type}</option>
+            #{/list}
+        </select>
+    </p>
+    <p>
+        <label>Astrologer</label>
+        <select name="astrologer.id">
+            #{list items:astrologers, as:'astro'}
+            <option value="${astro.id}">${astro.name}</option>
+            #{/list}
+        </select>
+    </p>
+    <input type="submit" value="Add" class="large button red" style="border:0px;"/>
+    #{/form}
+	</div>
+</div>
+</div>

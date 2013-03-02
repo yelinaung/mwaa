@@ -1,0 +1,28 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<h2>Here is Answer page</h2>
+
+<fieldset>
+	<legend> Answer Page </legend>
+#{ifnot qa}
+<p>Unable to Load Your Answer Please Contact Developer</p>
+#{/ifnot}
+#{if qa}
+
+<h5>${qa.question}</h5>
+<p>
+   Astrologer - ${qa.astrologer.name}
+</p>
+<p>
+    Type - ${qa.type}
+</p>
+<p>
+    #{ifnot qa.answer}
+        There is No Answer yet.
+    #{/ifnot}
+    #{if qa.answer}
+        ${qa.answer}
+    #{/if}
+</p>
+#{/if}

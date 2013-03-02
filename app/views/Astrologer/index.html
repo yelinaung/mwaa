@@ -1,0 +1,21 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<fieldset> 
+<legend> Astrologer Page </legend>
+
+#{ifnot questions}
+<p>There is no question</p>
+#{/ifnot}
+#{if questions}
+<ul>
+#{list items:questions, as:'question'}
+<li>
+    #{a @Astrologer.showQuestion(question.id)}
+        ${question.question} - ${question.answer}
+    #{/a}
+</li>
+#{/list}
+#{/if}
+</ul>
+</fieldset>

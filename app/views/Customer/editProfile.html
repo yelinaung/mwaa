@@ -1,0 +1,26 @@
+#{extends 'main.html' /}
+#{set title:'Edit Profile' /}
+
+<fieldset> 
+<legend> Edit User Profile </legend>
+
+#{form @Customer.updateProfile(cust.id)}
+
+    <p>
+        <label>Name</label>
+        <input type="text" name="name" class="title">
+    </p>
+    <p>
+        <label>Password</label>
+        <input type="text" name="password" class="title">
+    </p>
+
+    <p>
+        <label>Address</label>
+        <input type="text" name="address" class="title">
+    </p>
+
+    <input type="submit" value="Update" class="large button pink" style="border:0px;" />
+#{/form}
+
+</fieldset>

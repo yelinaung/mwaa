@@ -1,0 +1,19 @@
+#{extends 'main.html' /}
+#{set title:'Question' /}
+
+
+<fieldset>
+	<legend> Questions </legend>
+${qa.id} - 
+${qa.question} <br>
+Type - ${qa.type} <br>
+From - %{out.print(qa.showUser());}%
+
+#{form @Astrologer.saveAnswer(qa.id) , id:'creationForm' }
+<p>
+  <label>Answer</label>
+  <input type="text" name="answer" class="title"/>
+</p>
+<input type="submit" value="Add" class="large button red" style="border:0px;" />
+#{/form}
+</fieldset>

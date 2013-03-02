@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>#{get 'title' /}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <!-- Framework CSS -->
+        <link rel="stylesheet" href="@{'public/stylesheets/blueprint/screen.css'}" type="text/css" media="screen, projection">
+        <link rel="stylesheet" href="@{'public/stylesheets/blueprint/print.css'}" type="text/css" media="print">
+        <!--[if lt IE 8]><link rel="stylesheet" href="@{'public/stylesheets/blueprint/ie.css'}" type="text/css" media="screen, projection"><![endif]-->
+
+        <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/main.css'}">
+        <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/jquery.jqplot.css'}">
+        <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/validationEngine.jquery.css'}">
+        #{get 'moreStyles' /}
+        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+        <script src="@{'/public/javascripts/jquery-1.4.2.min.js'}" type="text/javascript" charset="utf-8"></script>
+        <script src="@{'/public/javascripts/jquery.validationEngine-en.js'}" type="text/javascript" charset="utf-8"></script>
+        <script src="@{'/public/javascripts/jquery.validationEngine.js'}" type="text/javascript" charset="utf-8"></script>
+        <script src="@{'/public/javascripts/jqplot.cursor.js'}" type="text/javascript" charset="utf-8"></script>
+        <script src="@{'/public/javascripts/jquery.jqplot.js'}" type="text/javascript" charset="utf-8"></script>
+        <script src="@{'/public/javascripts/jqplot.dateAxisRenderer.js'}" type="text/javascript" charset="utf-8"></script>
+        <script src="@{'/public/javascripts/jqplot.highlighter.js'}" type="text/javascript" charset="utf-8"></script>
+        #{get 'moreScripts' /}
+    </head>
+    <body>  
+			<div id="navbar">
+	            <a href="@{Application.index()}"> HOME </a>
+	            |
+				<a href="@{Application.about()}"> About </a>
+				|
+				#{ifnot session.username}
+	            <a href="@{Secure.login()}"> Log In </a>
+				#{/ifnot}
+				#{if session.username}	
+	            <a href="/logout"> Log Out </a>		
+				#{/if}
+	        </div><br/><br/>
+	        <h1 class="container" style="text-shadow: 3px 4px 5px rgba(0,0,0,0.25);">Welcome to MWAA </h1><br/>
+	<div class="container">
+			<hr height="2px">	
+		</div>
+	<div id="indexbody1" class="container"> 
+	<div class="span-15 prepend-1 colborder" id="navbar3" style="float: left; width:550px;"> Nice to meet you !
+		#{secure.check 'Admin'}<br>
+	    <a href="@{Admin.index()}"> Admin Panels </a>
+		|	
+	    <a href="@{Admin.astrologer()}">Astrologer</a>
+	    |
+	    <a href="@{Admin.code()}"> Prepaid Codes</a>
+	    |
+	    <a href="@{Admin.user()}"> Users </a>
+	    |
+	    <a href="@{Admin.report()}"> Admin Report </a>
+	    #{/secure.check}
+	    #{secure.check 'Customer'}<br>
+		<a href="@{Customer.index()}"> User </a>
+		|
+	    <a href="@{Customer.showAnswer()}"> User Report </a>
+	    |
+	    <a href="@{Customer.editProfile()}"> User's Settings </a>
+	    #{/secure.check}
+	    #{secure.check 'Astrologer' }<br>
+		<a href="@{Astrologer.index()}"> Astrologer </a>
+		|
+	    <a href=""> Astrologer's Answer </a>
+	    |
+	    <a href=""> Astrologer's Settings </a>
+	    #{/secure.check}
+	</div>
+	<div class="span-15 prepend-1 colborder" style="float:right;  height:30px; padding:0px; border:0px; position:absolute; margin-left:595px; margin-top:17px;"> 
+		<a href="http://www.twitter.com/mwaa">
+       	<img alt="Twitter" name="Twitter" src="../public/images/twitter.png"></a>
+		<a href="http://www.facebook.com/mwaa">
+       	<img alt="Facebook" name="Facebook" src="../public/images/facebook.png"></a>
+		<a href="http://www.delicious.com/mwaa">
+       	<img alt="Delicious" name="Delicious" src="../public/images/delicious.png"></a>
+		<a href="http://www.flickr.com/mwaa">
+       	<img alt="Delicious" name="Delicious" src="../public/images/flickr.png"></a>
+		<a href="http://www.feedburner.com/mwaa">
+       	<img alt="Feed" name="Feed" src="../public/images/feed.png"></a>
+		<a href="http://www.vimeo.com/mwaa">
+       	<img alt="Feed" name="Feed" src="../public/images/vimeo.png"></a>
+	</div>
+	</div>
+	        <br/>
+        <div class="container">
+            #{doLayout /}
+			<div>
+			<h3  class="alt" align="center">
+				Proudly presented to you by IADCS Team 2 , Section 40
+			</h3>
+			</div>
+			<hr>
+        </div>
+
+        <div id="footer" class="container">
+         <a href="http://www.playframework.org">
+         <img alt="Play Logo"  src="../public/images/logo.png"></a>
+        </div><br>
+       	<hr height="2px">
+    </body>
+</html>

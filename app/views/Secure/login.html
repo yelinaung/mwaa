@@ -1,0 +1,46 @@
+#{extends 'main.html' /}
+
+#{set title:'Welcome to MWAA' /}
+
+
+<script type="text/javascript">	
+		$(document).ready(function() {
+			$("#loginForm").validationEngine()
+		});
+</script>
+
+<h4>Please Login to access or #{a @Register.index()}Register#{/a} if you haven't account</h4>
+
+<div id="login">
+	<h1>&{'secure.title'}</h1>
+	#{form @authenticate() ,id:'loginForm'}
+		#{if flash.error}
+			<p class="error">
+				&{flash.error}
+			</p>
+		#{/if}
+		#{if flash.success}
+			<p class="success">
+				&{flash.success}
+			</p>
+		#{/if}
+		<fieldset>
+		<legend> Log In Form ! it's incredible! </legend>
+		<p id="username-field">
+			<label for="username">&{'secure.username'}</label>
+			<input type="text" name="username" id="username" value="${flash.username}" class="title validate[required]"/>
+		</p>
+		<p id="password-field">
+			<label for="password">&{'secure.password'}</label>
+			<input type="password" name="password" id="password" value="" class="title validate[required]"/>
+		</p>
+		<p id="remember-field">
+			<input type="checkbox" name="remember" id="remember" value="true" ${flash.remember ? 'checked="true"' : ''} />
+			<label for="remember">&{'secure.remember'}</label>
+		</p>
+		<p id="signin-field">
+			<input type="submit" class="large button yellow" id="signin" style="border:0px;" value="&{'secure.signin'}" />
+		</p>
+	#{/form}
+</fieldset>
+</div>

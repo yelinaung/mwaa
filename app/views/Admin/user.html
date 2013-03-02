@@ -1,0 +1,13 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<fieldset>
+<legend> User List </legend>
+#{if users}
+<ul>
+    #{list items:users,as:'user'}
+    <li>${user.email}</li>
+    #{/list}
+</ul>
+#{/if}
+</fieldset>

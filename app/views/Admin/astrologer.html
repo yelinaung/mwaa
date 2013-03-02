@@ -1,0 +1,44 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+#{if astrologers}
+<div id="astrologer">
+<h3 style="font-family: 'Arial';">
+<fieldset>
+<legend> Astrologer List </legend>
+<ul>
+#{list items:astrologers,as:'astrologer'}
+<li style="list-style:square; font-size: 14	px;">    
+    #{a @Admin.showAstrologer(astrologer.id)}${astrologer.name}#{/a}
+</li>
+#{/list}
+</ul>
+</fieldset>
+</h3>
+</div>
+#{/if}
+#{form @Admin.saveAstrologer() , id:'creationForm' }
+#{ifErrors}
+    <p class="error">
+        ${errors[0]}
+    </p>
+#{/ifErrors}
+<fieldset>
+<legend>Create New Astrologer </legend>
+#{field 'userInfo.email'}
+<p>
+  <label>Email</label><br />
+  <input type="text" id="${field.id}" name="${field.name}" class="title">
+</p>
+#{/}
+#{field 'userInfo.password'}
+<p>
+  <label>Password</label><br />
+  <input type="text" id="${field.id}" name="${field.name}" class="title">
+</p>
+
+#{/}
+    <p>
+        <input type="submit" value="Submit" class="large button blue" style="border:0px;"></fieldset>
+    </p>
+#{/form}
